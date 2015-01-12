@@ -31,6 +31,7 @@ yasr:
 
 Nib breaks the SourceMap feature of Stylus, but this will be solved in the future (wainting for the bugfix to ship).
 
+[Hexo]: http://hexo.io/
 [Stylus]: http://styl.us
 [Nib]: http://nib.com
 [Axis]: http://axis.cx
