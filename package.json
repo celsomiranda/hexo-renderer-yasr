@@ -1,6 +1,6 @@
 {
   "name": "hexo-renderer-yasr",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A Stylus CSS renderer for Hexo that uses Nib, Axis, Rupture, Jeet and Autoprefixer.",
   "main": "index.js",
   "repository": {
@@ -26,11 +26,11 @@
   },
   "homepage": "https://github.com/celsomiranda/hexo-renderer-yasr",
   "dependencies": {
-    "autoprefixer-stylus": "^0.4.0",
+    "autoprefixer-stylus": "^0.5.0",
     "axis": "^0.3.0",
     "jeet": "^6.1.2",
-    "nib": "^1.0.4",
+    "nib": "^1.1.0",
     "rupture": "^0.6.1",
-    "stylus": "^0.49.3"
+    "stylus": "^0.50.0"
   }
 }
