@@ -1,6 +1,6 @@
 #  Yeat Another Stylus Renderer
 
-A [Stylus] renderer for [Hexo] that uses [Nib], [Axis], [Rupture], [Jeet] and [Autoprefixer].
+A [Stylus] renderer for [Hexo] that uses [Nib], [Axis], [Rupture], [Jeet], [Typographic], and [Autoprefixer].
 
 #### Now with `sourcemaps`
 
@@ -60,3 +60,4 @@ yasr:
 [Jeet]: http://jeet.gs
 [Autoprefixer]: http://autoprefix.er
 [Rupture]: http://rupture.cx
+[Typographic]: http://corysimmons.github.io/typographic/

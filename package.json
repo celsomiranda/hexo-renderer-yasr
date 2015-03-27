@@ -27,10 +27,11 @@
   "homepage": "https://github.com/celsomiranda/hexo-renderer-yasr",
   "dependencies": {
     "autoprefixer-stylus": "^0.5.0",
-    "axis": "^0.3.0",
+    "axis": "^0.3.1",
     "jeet": "^6.1.2",
     "nib": "^1.1.0",
     "rupture": "^0.6.1",
-    "stylus": "^0.50.0"
+    "stylus": "^0.50.0",
+    "typographic": "^2.7.2"
   }
 }
