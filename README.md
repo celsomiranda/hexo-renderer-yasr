@@ -31,22 +31,25 @@ $ npm i hexo-renderer-yasr --save
 Place the following code inside your `_config.yml`.
 
 ``` yaml
-#   YASR - Hexo Renderer Configuration
+# YASR Configuration
+## Docs: https://github.com/celsomiranda/hexo-renderer-yasr
 yasr:
-  compress: false
-  sourcemaps:
+  axis: true              # Enables Axis (Recommends Nib)
+  compress: false         # Disables Compression
+  jeet: true              # Enables Jeet
+  nib: true               # Enables Nib
+  rupture: true           # Enables Rupture
+  typographic: true       # Enables Typographic
+  autoprefixer:           # Autoprefixer-stylus configuration
+    browsers:
+      - 'last 2 version'
+      - '> 5%'
+  sourcemaps:             # Sourcemaps configuration
     comment: true
     inline: true
     sourceRoot: ''
-    basePath: .
-  autoprefixer:
-    browsers:
-      - last 2 version
+    basePath: 'css/'
 ```
-
-- **Stylus**:
-  - **compress** - Compress generated CSS (default: `false`)
-
 
 - **Sourcemaps**
   - **comment** - Adds a comment with the `sourceMappingURL` to the generated CSS (default: `true`)
