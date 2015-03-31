@@ -9,6 +9,15 @@
   "unused": "vars",
   "globals": {
     "Promise": true,
-    "hexo": true
+    "hexo": true,
+    "require": false,
+    "module": false,
+    /* MOCHA */
+    "describe"   : false,
+    "it"         : false,
+    "before"     : false,
+    "beforeEach" : false,
+    "after"      : false,
+    "afterEach"  : false
   }
 }
