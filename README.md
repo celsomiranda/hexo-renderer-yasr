@@ -1,29 +1,38 @@
 #  Yet Another Stylus Renderer
 
 [![Build Status](https://travis-ci.org/celsomiranda/hexo-renderer-yasr.svg?branch=master)](https://travis-ci.org/celsomiranda/hexo-renderer-yasr)
-[![npm version](https://badge.fury.io/js/hexo-renderer-yasr.svg)](http://badge.fury.io/js/hexo-renderer-yasr) 
+[![npm version](https://badge.fury.io/js/hexo-renderer-yasr.svg)](http://badge.fury.io/js/hexo-renderer-yasr)
 [![npm dependencies](https://david-dm.org/celsomiranda/hexo-renderer-yasr.svg)](https://www.npmjs.com/package/hexo-renderer-yasr)
 [![Coverage Status](https://coveralls.io/repos/celsomiranda/hexo-renderer-yasr/badge.svg)](https://coveralls.io/r/celsomiranda/hexo-renderer-yasr)
 
 
 A [Stylus] renderer for [Hexo] that uses [Nib], [Axis], [Rupture], [Jeet], [Typographic], and [Autoprefixer].
 
-#### Now with `sourcemaps`
+## Features
 
-Although Hexo does come with it's own Stylus renderer &mdash; `hexo-renderer-stylus` &mdash; it only includes Nib support. If you're looking for some extra functionality, `hexo-renderer-yasr` is the stylus renderer you want.
+#### Integrated libraries
+Some libraries ask you to place `@import [library]` in your `.styl` file. YASR takes care of this for you. To use a library you just have to enable it in the `_config.yml` and start using it.
+
+#### Source Maps
+YASR can output sourcemaps to your CSS files. This is provided by Stylus, so if you encounter any bugs, let the Stylus developers know.
+
+**Warning: Some libraries can cause problems with sourcemaps.**
+
+#### Compression
+We use Stylus built in compression flag to minify the outputted CSS files.
 
 ## Installation
 
 Check to see if you have installed `hexo-renderer-stylus` (check inside the `node-modules` directory, but **don't delete it.**). If you have it installed run:
 
-``` bash
-$ npm uninstall hexo-renderer-stylus --save
+``` sh
+npm un hexo-renderer-stylus --save
 ```
 
 After you've removed the default renderer, or if you never installed it in the first place, run:
 
-``` bash
-$ npm i hexo-renderer-yasr --save
+``` sh
+npm i hexo-renderer-yasr --save
 ```
 
 ## Configuration
@@ -61,6 +70,11 @@ yasr:
 - **Autoprefixer**
   - **browsers** - An array that defines which browsers should be considered by autoprefixer
 
+## Changelog
+### 3.0.2
+- Re-factored the plugin
+- Re-factored the tests
+- Cleaned up the documentation
 
 [Hexo]: http://hexo.io/
 [Stylus]: http://styl.us
