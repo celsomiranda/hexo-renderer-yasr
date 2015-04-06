@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/celsomiranda/hexo-renderer-yasr.svg?branch=master)](https://travis-ci.org/celsomiranda/hexo-renderer-yasr)
 [![npm version](https://badge.fury.io/js/hexo-renderer-yasr.svg)](http://badge.fury.io/js/hexo-renderer-yasr)
 [![npm dependencies](https://david-dm.org/celsomiranda/hexo-renderer-yasr.svg)](https://www.npmjs.com/package/hexo-renderer-yasr)
-[![Coverage Status](https://coveralls.io/repos/celsomiranda/hexo-renderer-yasr/badge.svg)](https://coveralls.io/r/celsomiranda/hexo-renderer-yasr)
+[![Coverage Status](https://coveralls.io/repos/celsomiranda/hexo-renderer-yasr/badge.svg?branch=master)](https://coveralls.io/r/celsomiranda/hexo-renderer-yasr?branch=master)
 
 
 A [Stylus] renderer for [Hexo] that uses [Nib], [Axis], [Rupture], [Jeet], [Typographic], and [Autoprefixer].
