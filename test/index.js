@@ -1,224 +1,92 @@
+'use strict';
+var fs = require('fs');
+var render = require('../lib/renderer');
 var should = require('chai').should();
+var source = readFiles('test.styl');
 
-describe('Yet Another Stylus Renderer', function(){
-  var ctx = {
-    config: {
-      yasr: {
-        axis: false,
-        compress: false,
-        jeet: false,
-        nib: false,
-        rupture: false,
-        typographic: false,
-      }
-    }
-  };
+function readFiles (path) {
+  return fs.readFileSync(path.replace (/^/,'./test/fixtures/'), 'utf-8').replace(/(\r\n|\r)/gm,'\n');
+}
 
-  var r = require('../lib/renderer').bind(ctx);
+describe('YASR', function(){
 
-  it('Default', function(){
-    var body = [
-      'table',
-      '  for row in 1 2 3 4 5',
-      '    tr:nth-child({row})',
-      '      height: 10px * row'
-    ].join('\n');
+  it('should revert to default settings if none provided', function () {
+    var withoutConfig = readFiles('out/noconfig.css');
+    var ctx = {config: {}};
+    var parse = render.bind(ctx);
+    var result = parse({text: source, path: './test/fixtures/test.styl'});
 
-    r({text: body}, {}, function(err, result){
-      if (err) throw err;
-
-      result.should.eql([
-        'table tr:nth-child(1) {',
-        '  height: 10px;',
-        '}',
-        'table tr:nth-child(2) {',
-        '  height: 20px;',
-        '}',
-        'table tr:nth-child(3) {',
-        '  height: 30px;',
-        '}',
-        'table tr:nth-child(4) {',
-        '  height: 40px;',
-        '}',
-        'table tr:nth-child(5) {',
-        '  height: 50px;',
-        '}'
-      ].join('\n') + '\n');
-    });
+    ctx = {};
+    result.should.equal(withoutConfig);
   });
 
-  it('Axis CSS', function(){
-    ctx.config.yasr.axis = true;
-    var axiss = [
-      'code',
-      '  code(color = #DF5C33)'
-    ].join('\n');
+  it('should use individual plugins', function () {
+    var nib = readFiles('out/nib.css');
+    var ctx = {config: {yasr: {nib: true}}};
+    var p_nib = render.bind(ctx);
+    var r_nib = p_nib({text: source, path: './test/fixtures/test.styl'});
+    ctx = {};
 
-    r({text: axiss}, {}, function(err, result){
-      if (err) throw err;
+    var axis = readFiles('out/axis.css');
+    ctx = {config: {yasr: {axis: true}}};
+    var p_axis = render.bind(ctx);
+    var r_axis = p_axis({text: source, path: './test/fixtures/test.styl'});
+    ctx = {};
 
-      ctx.config.yasr.axis = false;
-      result.should.eql([
-        'code {',
-        '  padding: 3px 4px;',
-        '  color: #df5c33;',
-        '  background-color: #f5f5f5;',
-        '  border: 1px solid #e1e1e8;',
-        '  border-radius: 3px;',
-        '  font-family: Menlo, Monaco, \'Bitstream Vera Sans Mono\', Consolas, Courier, monospace;',
-        '}'
-      ].join('\n') + '\n');
-    });
+    var rupture = readFiles('out/rupture.css');
+    ctx = {config: {yasr: {rupture: true}}};
+    var p_rupture = render.bind(ctx);
+    var r_rupture = p_rupture({text: source, path: './test/fixtures/test.styl'});
+    ctx = {};
+
+    var jeet = readFiles('out/jeet.css');
+    ctx = {config: {yasr: {jeet: true}}};
+    var p_jeet = render.bind(ctx);
+    var r_jeet = p_jeet({text: source, path: './test/fixtures/test.styl'});
+    ctx = {};
+
+    var typographic = readFiles('out/typographic.css');
+    ctx = {config: {yasr: {typographic: true}}};
+    var p_typographic = render.bind(ctx);
+    var r_typographic = p_typographic({text: source, path: './test/fixtures/test.styl'});
+    ctx = {};
+
+    r_nib.should.equal(nib);
+    r_axis.should.equal(axis);
+    r_rupture.should.equal(rupture);
+    r_jeet.should.equal(jeet);
+    r_typographic.should.equal(typographic);
+
   });
 
-  it('Compress', function(){
-    ctx.config.yasr.compress = true;
+  it('should use sourcemaps', function () {
+    var sourceMaps = readFiles('out/sourcemaps.css');
+    var ctx = {config: {yasr: {sourcemaps: {comment: true, inline: true, sourceRoot: '', basePath: 'out/'}}}};
+    var parse = render.bind(ctx);
+    var result = parse({text: source, path: './test/fixtures/test.styl'});
 
-    var comps = [
-      '.test',
-      '  color: red'
-    ].join('\n');
-
-    r({text: comps}, {}, function(err, result){
-      if (err) throw err;
-
-      ctx.config.yasr.compress = false;
-      result.should.eql('.test{color:#f00}');
-    });
+    ctx = {};
+    result.should.equal(sourceMaps);
   });
 
-  it('Jeet', function(){
-    ctx.config.yasr.jeet = true;
-    var jeets = [
-      '.test',
-      '  center(1024px, 0)'
-    ].join('\n');
+  it('should use autoprefixer-stylus', function () {
+    var autoprefixer = readFiles('out/autoprefixer.css');
+    var ctx = {config: {yasr: {autoprefixer: {browsers: ['last 2 version','> 5%']}}}};
+    var parse = render.bind(ctx);
+    var result = parse({text: source, path: './test/fixtures/test.styl'});
 
-    r({text: jeets}, {}, function(err, result){
-      if (err) throw err;
-
-      ctx.config.yasr.jeet = false;
-      result.should.eql([
-        '.test {',
-        '  *zoom: 1;',
-        '  width: auto;',
-        '  max-width: 1024px;',
-        '  float: none;',
-        '  display: block;',
-        '  margin-right: auto;',
-        '  margin-left: auto;',
-        '  padding-left: 0;',
-        '  padding-right: 0;',
-        '}',
-        '.test:before,',
-        '.test:after {',
-        '  content: \'\';',
-        '  display: table;',
-        '}',
-        '.test:after {',
-        '  clear: both;',
-        '}'
-      ].join('\n') + '\n');
-    });
+    ctx = {};
+    result.should.equal(autoprefixer);
   });
 
-  it('Nib', function(){
-    ctx.config.yasr.nib = true;
-    var nibs = [
-      '.test',
-      '  fixed: bottom right;'
-    ].join('\n');
+  it('should compress the output files', function () {
+    var compressOutput = readFiles('out/compress.css');
+    var ctx = {config: {yasr: {compress: true}}};
+    var parse = render.bind(ctx);
+    var result = parse({text: source, path: './test/fixtures/test.styl'});
 
-    r({text: nibs}, {}, function(err, result){
-      if (err) throw err;
-
-      ctx.config.yasr.nib = false;
-      result.should.eql([
-        '.test {',
-        '  position: fixed;',
-        '  bottom: 0;',
-        '  right: 0;',
-        '}'
-      ].join('\n') + '\n');
-    });
-  });
-
-  it('Rupture', function(){
-    ctx.config.yasr.rupture = true;
-    var rup = [
-      '.test',
-      '  +above(360px)',
-      '    background-color: #fff'
-    ].join('\n');
-
-    r({text: rup}, {}, function(err, result){
-      if (err) throw err;
-
-      ctx.config.yasr.rupture = false;
-      result.should.eql([
-        '@media only screen and (min-width: 360px) {',
-        '  .test {',
-        '    background-color: #fff;',
-        '  }',
-        '}'
-      ].join('\n') + '\n');
-    });
-  });
-
-  it('Typographic', function(){
-    ctx.config.yasr.typographic = true;
-    var typs = [
-      '.test',
-      '  t-html()'
-    ].join('\n');
-
-    r({text: typs}, {}, function(err, result){
-      if (err) throw err;
-
-      ctx.config.yasr.typographic = false;
-      result.should.eql([
-
-        '.test {',
-        '  font-family: \'Helvetica Neue\', \'Helvetica\', \'Arial\', \'sans-serif\';',
-        '  font-weight: 300;',
-        '  color: #666;',
-        '  font-size: 12px;',
-        '  line-height: 1.75em;',
-        '}',
-        '@media (min-width: 600px) {',
-        '  .test {',
-        '    font-size: calc( 12px + (20 - 12) * ((100vw - 600px) / (1000 - 600)) );',
-        '  }',
-        '}',
-        '@media (min-width: 1000px) {',
-        '  .test {',
-        '    font-size: 20px;',
-        '  }',
-        '}'
-      ].join('\n') + '\n');
-    });
-  });
-
-  it('Autoprefixer', function(){
-    ctx.config.yasr.autoprefixer = { browsers: ['last 2 version','> 5%'] };
-
-    var comps = [
-      '.test',
-      '  display: flex'
-    ].join('\n');
-
-    r({text: comps}, {}, function(err, result){
-      if (err) throw err;
-
-      ctx.config.yasr.autoprefixer = null;
-      result.should.eql([
-        '.test {',
-        '  display: -webkit-flex;',
-        '  display: -ms-flexbox;',
-        '  display: flex;',
-        '}'
-      ].join('\n') + '\n');
-    });
+    ctx = {};
+    result.should.equal(compressOutput);
   });
 
 });
