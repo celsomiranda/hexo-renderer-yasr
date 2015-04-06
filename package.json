@@ -1,7 +1,7 @@
 {
   "name": "hexo-renderer-yasr",
-  "version": "3.0.1",
-  "description": "A Stylus CSS renderer for Hexo that uses Nib, Axis, Rupture, Jeet and Autoprefixer.",
+  "version": "3.0.2",
+  "description": "A Stylus CSS renderer for Hexo that uses Nib, Axis, Rupture, Jeet, Typographic and Autoprefixer.",
   "main": "index.js",
   "scripts": {
     "test": "gulp test"
