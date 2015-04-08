@@ -18,6 +18,31 @@ YASR can output sourcemaps to your CSS files. This is provided by Stylus, so if 
 
 **Warning: Some libraries can cause problems with sourcemaps.**
 
+#### Load properties from the theme configuration
+The render is now able to fetch properties that are defined inside the theme configuration file and place them in your CSS.
+
+I got the code from the original `hexo-renderer-stylus`.
+
+Theme's `_config.yml`:
+``` yaml
+img: 'http://loremflickr.com/800/600/'
+
+```
+
+Stylus:
+``` stylus
+.class
+  background-image hexo-config('img')
+```
+
+Resulting CSS:
+``` css
+.class {
+  background-image: 'http://loremflickr.com/800/600/';
+}
+```
+
+
 #### Compression
 We use Stylus built in compression flag to minify the outputted CSS files.
 
@@ -71,6 +96,10 @@ yasr:
   - **browsers** - An array that defines which browsers should be considered by autoprefixer
 
 ## Changelog
+### 3.1.0
+- Implemented `hexo-renderer-stylus` ability to load values from the theme configuration.
+- Implemented tests for the above feature.
+
 ### 3.0.2
 - Re-factored the plugin
 - Re-factored the tests
