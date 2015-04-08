@@ -59,6 +59,17 @@ describe('YASR', function(){
 
   });
 
+  it('should use values from theme config', function () {
+    var sourceMaps = readFiles('out/themeconfig.css');
+    var themeSource = readFiles('testtheme.styl');
+    var ctx = {config: {header: 'not-this'}, theme:{ config:{ header: 'http://loremflickr.com/1600/900/model'}}};
+    var parse = render.bind(ctx);
+    var result = parse({text: themeSource, path: './test/fixtures/testtheme.styl'});
+
+    ctx = {};
+    result.should.equal(sourceMaps);
+  });
+
   it('should use sourcemaps', function () {
     var sourceMaps = readFiles('out/sourcemaps.css');
     var ctx = {config: {yasr: {sourcemaps: {comment: true, inline: true, sourceRoot: '', basePath: 'out/'}}}};
