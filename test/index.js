@@ -10,10 +10,11 @@ function readFiles(path) {
     .replace(/(\r\n|\r)/gm, '\n');
 }
 
+var withoutConfig = readFiles('out/noconfig.css');
+
 describe('YASR', function () {
 
   it('should revert to default settings if none provided', function () {
-    var withoutConfig = readFiles('out/noconfig.css');
     var ctx = {
       config: {}
     };

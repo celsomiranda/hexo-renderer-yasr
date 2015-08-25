@@ -6,6 +6,7 @@ html {
   fixed: bottom right;
 }
 .autoprefixer {
+  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;

@@ -14,10 +14,10 @@ html {
 }
 @media (min-width: 600px) {
   .typographic {
-    font-size: calc( 12px + (20 - 12) * ((100vw - 600px) / (1000 - 600)) );
+    font-size: calc( 12px + (20 - 12) * ((100vw - 600px) / (1140 - 600)) );
   }
 }
-@media (min-width: 1000px) {
+@media (min-width: 1140px) {
   .typographic {
     font-size: 20px;
   }

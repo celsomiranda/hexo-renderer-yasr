@@ -29,24 +29,24 @@
   },
   "homepage": "https://github.com/celsomiranda/hexo-renderer-yasr",
   "dependencies": {
-    "autoprefixer-stylus": "^0.5.0",
-    "axis": "^0.3.1",
+    "autoprefixer-stylus": "^0.7.1",
+    "axis": "^0.4.2",
     "jeet": "^6.1.2",
     "nib": "^1.1.0",
     "rupture": "^0.6.1",
-    "stylus": "^0.50.0",
-    "typographic": "^2.9.1"
+    "stylus": "^0.52.0",
+    "typographic": "^2.9.3"
   },
   "devDependencies": {
-    "chai": "^2.2.0",
-    "coveralls": "^2.11.2",
-    "gulp": "^3.8.11",
-    "gulp-istanbul": "^0.8.1",
-    "gulp-jshint": "^1.10.0",
-    "gulp-load-plugins": "^0.9.0",
-    "gulp-mocha": "^2.0.1",
-    "jshint-stylish": "^1.0.1",
-    "mocha": "^2.2.1",
-    "rimraf": "^2.3.2"
+    "chai": "^3.2.0",
+    "coveralls": "^2.11.4",
+    "gulp": "^3.9.0",
+    "gulp-istanbul": "^0.10.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-mocha": "^2.1.3",
+    "jshint-stylish": "^2.0.1",
+    "mocha": "^2.2.5",
+    "rimraf": "^2.4.2"
   }
 }
