@@ -6,10 +6,11 @@
 [![Coverage Status](https://coveralls.io/repos/celsomiranda/hexo-renderer-yasr/badge.svg?branch=master)](https://coveralls.io/r/celsomiranda/hexo-renderer-yasr?branch=master)
 
 
-A [Stylus] renderer for [Hexo] that uses [Nib], [Axis], [Rupture], [Jeet], [Typographic], and [Autoprefixer].
+A [Stylus] renderer for [Hexo] that uses [Nib], [Axis], [Rupture], [Jeet], and [Typographic]. It used to have [Autoprefixer] but it got deprecated, so I had to let it go. For now.
+
+Please use Hexo version 3.0.0 or above. This doesn't support 2.x.x and never will.
 
 ## Features
-
 #### Integrated libraries
 Some libraries ask you to place `@import [library]` in your `.styl` file. YASR takes care of this for you. To use a library you just have to enable it in the `_config.yml` and start using it.
 
@@ -42,7 +43,6 @@ Resulting CSS:
 }
 ```
 
-
 #### Compression
 We use Stylus built in compression flag to minify the outputted CSS files.
 
@@ -74,10 +74,6 @@ yasr:
   nib: true               # Enables Nib
   rupture: true           # Enables Rupture
   typographic: true       # Enables Typographic
-  autoprefixer:           # Autoprefixer-stylus configuration
-    browsers:
-      - 'last 2 version'
-      - '> 5%'
   sourcemaps:             # Sourcemaps configuration
     comment: true
     inline: true
@@ -91,19 +87,6 @@ yasr:
   - **sourceRoot** - `sourceRoot` property of the generated sourcemap
   - **basePath** - Base path from which sourcemap and all sources are relative (default: `.`)
 
-
-- **Autoprefixer**
-  - **browsers** - An array that defines which browsers should be considered by autoprefixer
-
-## Changelog
-### 3.1.0
-- Implemented `hexo-renderer-stylus` ability to load values from the theme configuration.
-- Implemented tests for the above feature.
-
-### 3.0.2
-- Re-factored the plugin
-- Re-factored the tests
-- Cleaned up the documentation
 
 [Hexo]: http://hexo.io/
 [Stylus]: http://styl.us
