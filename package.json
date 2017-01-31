@@ -1,6 +1,6 @@
 {
   "name": "hexo-renderer-yasr",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A Stylus CSS renderer for Hexo that uses Nib, Axis, Rupture, Jeet, and Typographic.",
   "main": "index.js",
   "scripts": {
@@ -29,17 +29,17 @@
   },
   "homepage": "https://github.com/celsomiranda/hexo-renderer-yasr",
   "dependencies": {
-    "axis": "^0.5.2",
-    "jeet": "^6.1.2",
-    "nib": "^1.1.0",
-    "rupture": "^0.6.1",
-    "stylus": "^0.53.0",
-    "typographic": "^2.9.3"
+    "axis": "^0.6.1",
+    "jeet": "^7.1.0",
+    "nib": "^1.1.2",
+    "rupture": "^0.6.2",
+    "stylus": "^0.54.5",
+    "typographic": "^3.0.0"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
-    "coveralls": "^2.11.6",
-    "gulp": "^3.9.0",
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.15",
+    "gulp": "^3.9.1",
     "gulp-istanbul": "^0.10.3",
     "gulp-jshint": "^2.0.0",
     "gulp-load-plugins": "^1.1.0",
