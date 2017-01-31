@@ -40,13 +40,13 @@
     "chai": "^3.5.0",
     "coveralls": "^2.11.15",
     "gulp": "^3.9.1",
-    "gulp-istanbul": "^0.10.3",
-    "gulp-jshint": "^2.0.0",
-    "gulp-load-plugins": "^1.1.0",
-    "gulp-mocha": "^2.2.0",
-    "jshint": "^2.8.0",
-    "jshint-stylish": "^2.1.0",
-    "mocha": "^2.3.4",
-    "rimraf": "^2.5.0"
+    "gulp-istanbul": "^1.1.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-mocha": "^3.0.1",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "mocha": "^3.2.0",
+    "rimraf": "^2.5.4"
   }
 }

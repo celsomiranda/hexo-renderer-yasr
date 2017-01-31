@@ -74,8 +74,6 @@ describe('YASR', function () {
     });
     ctx = { config: { yasr: { typographic: false } } };
 
-    console.log(r_jeet)
-
     r_nib.should.equal(nib);
     r_axis.should.equal(axis);
     r_rupture.should.equal(rupture);
