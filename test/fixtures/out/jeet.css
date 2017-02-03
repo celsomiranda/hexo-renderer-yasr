@@ -6,7 +6,6 @@ html {
   fixed: bottom right;
 }
 .jeet {
-  *zoom: 1;
   width: auto;
   max-width: 1024px;
   float: none;
@@ -16,11 +15,8 @@ html {
   padding-left: 0;
   padding-right: 0;
 }
-.jeet:before,
-.jeet:after {
+.jeet::after {
   content: '';
   display: table;
-}
-.jeet:after {
   clear: both;
 }
